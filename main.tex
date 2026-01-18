@@ -1,0 +1,334 @@
+\documentclass[10pt, a4paper, twocolumn]{article}
+
+% 宏包引入
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ctex}           
+\usepackage{amsmath}        
+\usepackage{amssymb}        
+\usepackage{mathtools}      
+\usepackage{geometry}       
+\usepackage{xcolor}         
+\usepackage{booktabs}       
+\usepackage{array}          
+\usepackage{enumitem}       
+\usepackage{titlesec} 
+\usepackage{graphicx}
+
+% --- 核心修改 1: 极致的页面边距 ---
+\geometry{left=0.8cm, right=0.8cm, top=1cm, bottom=1cm}
+
+% --- 核心修改 2: 全局紧凑设置 ---
+\setlength{\parindent}{0pt}          
+\setlength{\parskip}{0pt}            % 段落间不留空
+\renewcommand{\baselinestretch}{0.95} %稍微压缩行距（不影响阅读）
+
+% --- 核心修改 3: 压缩公式垂直间距 (这是省空间的大头) ---
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{2pt}
+  \setlength\belowdisplayskip{2pt}
+  \setlength\abovedisplayshortskip{0pt}
+  \setlength\belowdisplayshortskip{0pt}
+}
+\makeatother
+
+% --- 核心修改 4: 压缩章节标题间距 ---
+\titleformat{\section}{\bfseries\small}{\thesection}{0em}{}[\hrule] % 标题更紧凑，加下划线区分
+\titlespacing*{\section}{0pt}{6pt}{2pt} % 左边距，上方间距，下方间距
+
+% --- 核心修改 5: 压缩列表间距 ---
+\setlist[itemize]{nosep, leftmargin=*} % 列表无间距
+
+% 自定义命令
+\newcommand{\unit}[1]{\,\mathrm{#1}} 
+
+\begin{document}
+
+% --- 核心修改 6: 手动精简标题，替代 \maketitle ---
+\twocolumn[
+  \begin{center}
+    \textbf{\large Atomic Physics Cheating Paper} \\
+    \vspace{0.3em}
+  \end{center}
+]
+
+%----------------------------------------------------------------
+\section*{1. 卢瑟福散射与经典力学}
+
+\begin{equation*}
+    a \equiv \frac{1}{4\pi\varepsilon_0} \frac{Z_1 Z_2 e^2}{E}, \quad b = \frac{a}{2} \cot \frac{\theta}{2}
+\end{equation*}
+
+\textbf{粒子计数公式：}
+\begin{equation*}
+    dN' = N n t \left( \frac{Z_1 Z_2 e^2}{16\pi\varepsilon_0 E_k} \right)^2 \frac{d\Omega}{\sin^4(\frac{\theta}{2})}
+\end{equation*}
+
+\textbf{微分散射截面 (Rutherford)：}
+\begin{equation*}
+    \frac{d\sigma}{d\Omega} = \sigma_{\mathrm{C}}(\theta) = \left( \frac{1}{4\pi\varepsilon_0} \frac{Z_1 Z_2 e^2}{4E} \right)^2 \frac{1}{\sin^4 \frac{\theta}{2}}
+\end{equation*}
+
+\textbf{实验室系截面：}
+\begin{align*}
+    \sigma_{\mathrm{L}}(\theta_{\mathrm{L}}) &= \left( \frac{1}{4\pi\varepsilon_0} \frac{Z_1 Z_2 e^2}{2 E_{\mathrm{L}} \sin^2 \theta_{\mathrm{L}}} \right)^2 \\
+    &\quad \times \frac{\left[ \cos \theta_{\mathrm{L}} + \sqrt{1 - \left( \frac{m_1}{m_2} \sin \theta_{\mathrm{L}} \right)^2} \right]^2}{\sqrt{1 - \left( \frac{m_1}{m_2} \sin \theta_{\mathrm{L}} \right)^2}}
+\end{align*}
+
+\textbf{散射分数 $f$：}
+\begin{equation*}
+    f = n_s \cdot 4\pi C \cot^2\left(\frac{\theta_0}{2}\right), \quad C = \left(\frac{Z_1 Z_2 e^2}{16\pi\varepsilon_0 E}\right)^2
+\end{equation*}
+
+%----------------------------------------------------------------
+\section*{2. 热辐射与玻尔模型}
+
+\textbf{普朗克公式：}
+\begin{equation*}
+    E(\nu,T)d\nu = \frac{8\pi h \nu^3}{c^3} \frac{1}{e^{h\nu/kT} - 1} d\nu
+\end{equation*}
+
+\textbf{玻尔半径：}
+\begin{equation*}
+    r_n = \frac{4\pi\varepsilon_0 \hbar^2}{Zm_e e^2} \cdot n^2
+\end{equation*}
+
+\textbf{能级与速度：}
+\begin{equation*}
+    E_n = -\frac{1}{2}Z^2 m_e c^2 \alpha^2 \frac{1}{n^2} \approx -\frac{Z^2 13.6}{n^2} \unit{eV}
+\end{equation*}
+\begin{equation*}
+    v_n = \frac{Z}{n} \alpha c, \quad \alpha = 1/137
+\end{equation*}
+
+\textbf{原子核运动修正（约化质量）：}
+\begin{equation*}
+    R_A = R_\infty \frac{1}{1 + m_e/m_A}
+\end{equation*}
+
+%----------------------------------------------------------------
+\section*{3. 光电效应与基本常数}
+
+\textbf{光电效应方程：}
+\begin{equation*}
+    \frac{1}{2}mv_{m}^{2} = h\nu - \phi
+\end{equation*}
+
+\textbf{常用常数与关系：}
+\begin{itemize}
+    \item $\hbar c \approx 197 \unit{eV}\cdot\unit{nm}$ （联系长度和能量）
+    \item $e^2/4\pi\varepsilon_0 \approx 1.44 \unit{eV}\cdot\unit{nm}$ （电磁项）
+    \item $m_e c^2 \approx 0.511 \unit{MeV}$ （电子静止能量）
+\end{itemize}
+
+\textbf{相对论效应：}
+\begin{gather*}
+    E = mc^2 = \frac{m_0 c^2}{\sqrt{1 - (v/c)^2}} \\
+    E^2 = (pc)^2 + (m_0 c^2)^2
+\end{gather*}
+
+%----------------------------------------------------------------
+\section*{4. 量子力学基础}
+
+\textbf{德布罗意波长：} $\lambda = h/p$
+
+\textbf{不确定性原理：} $\Delta x \Delta p_x \ge \frac{\hbar}{2}, \Delta E \Delta t \ge \frac{\hbar}{2}$
+
+\textbf{概率密度：}
+$P(\boldsymbol{r}, t) = |\psi(\boldsymbol{r}, t)|^2 = \psi^* \psi$
+
+\textbf{薛定谔方程 (定态)：}
+\begin{equation*}
+    \nabla^2 \psi + \frac{2m}{\hbar^2}(E - V)\psi = 0
+\end{equation*}
+
+\textbf{一维无限深方势阱：}
+\begin{equation*}
+    E_n = \frac{n^2 h^2}{8ma^2}, \quad \psi_n(x) = \sqrt{\frac{2}{a}} \sin(\frac{n\pi x}{a}) \quad (n\ge 1)
+\end{equation*}
+
+\textbf{一维谐振子：}
+$E_n = (n + \frac{1}{2})\hbar\omega \quad (n\ge 0)$
+
+\textbf{量子隧穿 (透射系数)：}
+\begin{equation*}
+    T \approx e^{-2\sqrt{2m(V_0-E)} \cdot d / \hbar}
+\end{equation*}
+
+\textbf{算符与期望值：}
+$\bar{f} = \int \psi^* \hat{f} \psi d\tau$
+\begin{equation*}
+    \hat{p} = -i\hbar \nabla, \quad \hat{H} = -\frac{\hbar^2}{2m}\nabla^2 + V, \quad \hat{L}_z = -i\hbar \frac{\partial}{\partial \phi}
+\end{equation*}
+
+%----------------------------------------------------------------
+\section*{5. 磁矩与角动量}
+
+\textbf{布拉格衍射：} $2d \sin \theta = n\lambda$
+
+\textbf{磁矩公式：}
+\begin{align*}
+    \vec{\mu}_l &= - \frac{e}{2m_e} \vec{L} = -\gamma \vec{L} \\
+    \vec{\mu}_s &= -g_s \frac{e}{2m_e} \vec{S}
+\end{align*}
+
+\textbf{幅值与投影：}
+\begin{itemize}
+    \item $|\vec{\mu}_l| = \sqrt{l(l+1)}\mu_B$
+    \item $|\vec{\mu}_J| = g_J \sqrt{j(j+1)} \mu_B$
+    \item $\mu_z = -m_J g_J \mu_B$
+    \item $S = \sqrt{s(s+1)}\hbar$
+\end{itemize}
+
+\textbf{玻尔磁子：}
+$\mu_B = \frac{e\hbar}{2m_e} \approx 9.27 \times 10^{-24} \unit{J/T}$
+
+\textbf{磁场中的力：} $F_z = \mu_z \frac{\partial B}{\partial z}$
+
+\textbf{朗德 g 因子：}
+$g_l=1, \quad g_s \approx 2$
+\begin{equation*}
+    g_J = 1 + \frac{j(j+1) + s(s+1) - l(l+1)}{2j(j+1)}
+\end{equation*}
+
+%----------------------------------------------------------------
+\section*{6. 外磁场效应}
+
+\textbf{能级分裂：}
+\begin{itemize}
+    \item 弱磁场：$\Delta E = \mu_B B g_j m_j$
+    \item 强磁场：$\Delta E = \mu_B B (m_l + 2m_s)$
+\end{itemize}
+
+\textbf{谱线分裂：}
+\begin{equation*}
+    \Delta \tilde{\nu} = \frac{(M_{\text{上}} g_{\text{上}} - M_{\text{下}} g_{\text{下}}) \cdot \mu_B B}{hc}
+\end{equation*}
+
+\textbf{单纯能量差与磁场：}
+$\Delta E = \Delta U = \frac{hc \Delta \lambda}{\lambda^2}$
+\begin{equation*}
+    B = \frac{hc \Delta \lambda}{2\lambda^2 \mu_B g_J} \quad (\text{塞曼分裂})
+\end{equation*}
+
+\textbf{施特恩-格拉赫实验通用公式：}
+\begin{align*}
+    \Delta Z &= \frac{g_J \mu_B \left( \frac{\partial B}{\partial z} \right) d D}{2 E_k} \cdot \Delta m_J \\
+             &= \textcolor{cyan}{\frac{g_J \mu_B \left( \frac{\partial B}{\partial z} \right) d D}{m v^2} \cdot \Delta m_J} \\
+             &= \textcolor{orange}{\frac{g_J \mu_B \left( \frac{\partial B}{\partial z} \right) d D}{3 k_B T} \cdot \Delta m_J}
+\end{align*}
+
+%----------------------------------------------------------------
+\section*{7. 精细结构与多电子原子}
+
+\textbf{原子光谱项符号：} 
+\begin{equation*}
+    {}^{2S+1}L_J \quad (\text{宇称 } \pi = (-1)^{\sum l_i})
+\end{equation*}
+\begin{itemize}
+    \item $2S+1$: 自旋多重度
+    \item $L$ (总轨道): $0(S), 1(P), 2(D), 3(F), 4(G), 5(H)$
+    \item $J$ (总角动量): $|L-S| \le J \le L+S$
+\end{itemize}
+
+\textbf{洪特规则 (确定基态顺序)：}
+\begin{enumerate}
+    \item \textbf{最大 $S$}：自旋多重度 $2S+1$ 最大者能量最低。
+    \item \textbf{最大 $L$}：在 $S$ 相同时，轨道角动量 $L$ 最大者能量最低。
+    \item \textbf{确定 $J$} (自旋-轨道耦合)：
+    \begin{itemize}
+        \item 电子数 $\le$ 半满：$J = |L-S|$ (最小 J 能量最低)
+        \item 电子数 $>$ 半满：$J = L+S$ (最大 J 能量最低)
+    \end{itemize}
+\end{enumerate}
+
+\textbf{氢原子精细结构：}
+\begin{align*}
+    E_{nj} = &-\frac{13.6 Z^2}{n^2} \left[ 1 + \frac{(Z\alpha)^2}{n^2} \left( \frac{n}{j+1/2} - \frac{3}{4} \right) \right]
+\end{align*}
+
+\textbf{L-S 耦合能量项：}
+\begin{equation*}
+    \Delta E_{ls} = \frac{1}{2} A [J(J+1) - L(L+1) - S(S+1)]
+\end{equation*}
+其中 $A \propto \frac{Z^4}{n^3 l(l+1/2)(l+1)}$ (Landé interval rule)
+
+\textbf{空穴原理：} 超过半充满壳层的电子数等效于空穴数（$L, S$ 相同，但 $J$ 的基态规则相反）。
+
+\textbf{泡利不相容与填充限额：}
+\begin{itemize}
+    \item 主壳层 $2n^2$; 分壳层 $2(2l+1)$
+    \item 等效电子（$n, l$ 相同）需考虑泡利原理排除重复态。
+\end{itemize}
+
+\begin{table}[h]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.1}
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{类型} & \textbf{计算步骤} \\
+        \hline
+        \textbf{L-S} & 
+        1. $\vec{L} = \sum \vec{l}_i$ \quad
+        2. $\vec{S} = \sum \vec{s}_i$ \quad
+        3. $\vec{J} = \vec{L} + \vec{S}$ \\
+        \hline
+        \textbf{j-j} & 
+        1. $\vec{j}_i = \vec{l}_i + \vec{s}_i$ \quad
+        2. $\vec{J} = \sum \vec{j}_i$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+%----------------------------------------------------------------
+\section*{8. X 射线与康普顿散射}
+
+\textbf{短波限：} $\lambda_{min} = hc/E = hc/eV$
+
+\textbf{康普顿波长偏移：}
+$\Delta \lambda = \lambda' - \lambda = \frac{h}{m_e c}(1 - \cos \theta)$
+
+\textbf{衰减定律：} $I = I_0 e^{-\mu x}$
+
+\textbf{能量转移 (电子获得动能)：} $E_k' = E - E'$
+
+\textbf{莫塞莱定律：}
+\begin{equation*}
+    E_0 = 13.6 \unit{eV} \cdot (Z - \sigma)^2 \cdot \left( \frac{1}{n_1^2} - \frac{1}{n_2^2} \right)
+\end{equation*}
+
+\textbf{散射光子能量 (康普顿)：}
+\begin{equation*}
+    E' = \frac{E}{1 + \frac{E}{m_p c^2}(1 - \cos \theta)}
+\end{equation*}
+
+%----------------------------------------------------------------
+\section*{9. 径向波函数附录}
+
+\textbf{积分公式：} $\int_0^\infty x^n e^{-\alpha x} dx = \frac{n!}{\alpha^{n+1}}$
+
+\textbf{类氢原子径向波函数 $R_{n,l}(r)$：}
+
+{\footnotesize
+\begin{align*}
+    R_{1,0} &= 2 \left( \frac{Z}{a_1} \right)^{3/2} e^{-Zr/a_1} \\
+    R_{2,0} &= 2 \left( \frac{Z}{2a_1} \right)^{3/2} \left( 1 - \frac{Zr}{2a_1} \right) e^{-Zr/2a_1} \\
+    R_{2,1} &= \frac{1}{\sqrt{3}} \left( \frac{Z}{2a_1} \right)^{3/2} \left( \frac{Zr}{a_1} \right) e^{-Zr/2a_1} \\
+    R_{3,0} &= 2 \left( \frac{Z}{3a_1} \right)^{3/2} \left[ 1 - \frac{2Zr}{3a_1} + \frac{2}{27} \left( \frac{Zr}{a_1} \right)^2 \right] e^{-\frac{Zr}{3a_1}} \\
+    R_{3,1} &= \frac{4\sqrt{2}}{3} \left( \frac{Z}{3a_1} \right)^{3/2} \left[ \frac{Zr}{a_1} - \frac{1}{6} \left( \frac{Zr}{a_1} \right)^2 \right] e^{-\frac{Zr}{3a_1}} \\
+    R_{3,2} &= \frac{2\sqrt{2}}{27\sqrt{5}} \left( \frac{Z}{3a_1} \right)^{3/2} \left( \frac{Zr}{a_1} \right)^2 e^{-Zr/3a_1}
+\end{align*}
+}
+
+\vfill % 1. 填充垂直空间，将后续内容推到底部
+
+\begin{center} % 2. 居中环境
+    % 3. 插入图片：width=0.8\linewidth 表示占当前栏宽度的 80%
+    % 请确保你已将图片上传并重命名为 god_bless_atomic.jpg (或实际文件名)
+    \includegraphics[width=1.95\linewidth]{atomic.png} 
+\end{center}
+
+\end{document}
